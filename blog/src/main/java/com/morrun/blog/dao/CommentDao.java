@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.morrun.blog.beans.Comment;
 
-public interface CommentDao extends JpaRepository<Comment, Integer> {
+public interface CommentDao extends JpaRepository<Comment, Long> {
 	List<Comment> findByBlogId(Long blogId);
 }

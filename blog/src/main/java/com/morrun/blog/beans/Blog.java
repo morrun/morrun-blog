@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -25,6 +26,26 @@ public class Blog {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	public Blog(Long id, List<Comment> comments, String title, String content, int userId, Date createDate,
+			Date updateDate, int like, int unlike, BlogType type) {
+		super();
+		this.id = id;
+		this.comments = comments;
+		this.title = title;
+		this.content = content;
+		this.userId = userId;
+		this.createDate = createDate;
+		this.updateDate = updateDate;
+		this.like = like;
+		this.unlike = unlike;
+		this.type = type;
+	}
+	public BlogType getType() {
+		return type;
+	}
+	public void setType(BlogType type) {
+		this.type = type;
+	}
 	@OneToMany(mappedBy = "blog", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JsonIgnoreProperties("blog")
 	private List<Comment> comments;
@@ -45,7 +66,9 @@ public class Blog {
 	private int like;
 	@Column(name = "`unlike`")
 	private int unlike;
-	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "`type_id`")
+	private BlogType type;
 	public List<Comment> getComments() {
 		return comments;
 	}
@@ -136,7 +159,7 @@ public class Blog {
 	public String toString() {
 		return "Blog [id=" + id + ", comments=" + comments + ", title=" + title + ", content=" + content + ", userId="
 				+ userId + ", createDate=" + createDate + ", updateDate=" + updateDate + ", like=" + like + ", unlike="
-				+ unlike + "]";
+				+ unlike + ", type=" + type + "]";
 	}
 	
 	
