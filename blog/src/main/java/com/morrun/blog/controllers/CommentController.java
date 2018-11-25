@@ -1,5 +1,6 @@
 package com.morrun.blog.controllers;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,8 @@ public class CommentController {
 	}
 	@PostMapping(value = "/comments")
 	public Response addComment(@RequestBody Comment comment) {
-		System.out.println(comment);
+		comment.setCreateDate(new Date());
+		comment.setUpdateDate(new Date());
 		return cs.addComment(comment);
 	}
 }
