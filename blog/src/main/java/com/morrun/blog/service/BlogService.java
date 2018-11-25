@@ -22,4 +22,7 @@ public class BlogService {
 	public List<Blog> getAllBlog() {
 		return bd.findAll();
 	}
+	public Blog getBlogById(Long id) {
+		return bd.findById(id).get();
+	}
 }

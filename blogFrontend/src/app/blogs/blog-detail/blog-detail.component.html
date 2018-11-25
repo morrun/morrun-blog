@@ -1,0 +1,51 @@
+<div class="jumbotron jumbotron-fluid" *ngIf="blog">
+  <div class="container">
+    <h1 class="display-4">{{blog.title}}</h1>
+    <p class="lead">{{blog.content}}</p>
+  </div>
+</div>
+
+
+<div class="container" *ngIf="blog">
+  <div class="shadow p-3 mb-5 bg-white rounded">
+  <div class="card" *ngFor="let comment of blog.comments; let i = index">
+  <div class="card-body shadow-none p-3 mb-5 bg-light rounded">
+    <h3 class="card-title">Floor {{i + 1}}</h3>
+    <p class="card-text">{{comment.content}}</p>
+    <div class="row">
+    <div class="col-sm">
+      <p class="font-weight-light">Created at : {{comment.createDate}}</p>
+    </div>
+    <div class="col-sm">
+      <p class="font-weight-light">Last updated at : {{comment.updateDate}}</p>
+    </div>
+    <div class="col-sm">
+      <p class="font-weight-light">Commented by : {{comment.commenterEmail}}</p>
+    </div>
+    </div>
+  </div>
+  </div>
+</div>
+  <div class="shadow-lg p-3 mb-5 bg-white rounded">
+  <h3 class="card-title align-content-center">Leave Your Comments</h3>
+  <form [formGroup] = "commentFormGroup" #commentForm="ngForm" *ngIf="commentFormGroup" (ngSubmit)="submit()">
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Email address</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" formControlName="commenterEmail">
+      <div class="alert alert-dark" role="alert" *ngIf="(commentFormGroup.get('commenterEmail').touched)&&commentFormGroup.get('commenterEmail').errors && commentFormGroup.get('commenterEmail').errors.pattern">
+        Please Input a Valid Email!
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlTextarea3">Rounded corners</label>
+      <textarea class="form-control" id="exampleFormControlTextarea3" rows="7" formControlName="content"></textarea>
+      <div class="alert alert-dark" role="alert" *ngIf="(commentFormGroup.get('content').touched)&&commentFormGroup.get('content').errors">
+        Then Comment Can't be Empty!
+      </div>
+    </div>
+    <div class="col col-lg-2">
+      <button class="btn btn-primary btn-dark" style="color: white" role="button">submit</button>
+    </div>
+  </form>
+  </div>
+</div>

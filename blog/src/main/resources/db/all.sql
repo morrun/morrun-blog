@@ -23,7 +23,13 @@ CREATE TABLE `morrun_blog` (
   `create_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updata_date` timestamp NULL DEFAULT NULL,
   `like` int(11) DEFAULT 0,
-  `unlike` int(11) DEFAULT 0
+  `unlike` int(11) DEFAULT 0,
+  `type_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `morrun_blog_type` (
+  `id` int(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
+  `type` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `morrun_comment` (
