@@ -12,6 +12,13 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { BlogDetailComponent } from './blogs/blog-detail/blog-detail.component';
+import { UsersComponent } from './users/users.component';
+import { LoginComponent } from './users/login/login.component';
+import { AddBlogComponent } from './blogs/add-blog/add-blog.component';
+import { ErrorComponent } from './error/error.component';
+import { ModifyBlogComponent } from './blogs/modify-blog/modify-blog.component';
+import { ModifyCommentComponent } from './blogs/blog-detail/modify-comment/modify-comment.component';
+import { BlogPipePipe } from './shared/pipes/blog-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +27,14 @@ import { BlogDetailComponent } from './blogs/blog-detail/blog-detail.component';
     FooterComponent,
     BlogsComponent,
     ProfileComponent,
-    BlogDetailComponent
+    BlogDetailComponent,
+    UsersComponent,
+    LoginComponent,
+    AddBlogComponent,
+    ErrorComponent,
+    ModifyBlogComponent,
+    ModifyCommentComponent,
+    BlogPipePipe
   ],
   imports: [
     BrowserModule,

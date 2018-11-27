@@ -1,0 +1,26 @@
+<main class="container">
+  <div  style="height: 480px">
+  <form class="w-50 mx-auto mt-lg-5 shadow p-3 mb-5 bg-white rounded" (ngSubmit)="loginForm.valid && onSubmit(loginForm.value)" #loginForm="ngForm" (input)="updateErr()">
+    <div class="form-group">
+      <label for="username">Email address</label>
+      <input type="email" class="form-control"  aria-describedby="emailHelp" placeholder="Enter email" id="username" name="username" ngModel #name="ngModel" required="">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      <div class="alert alert-dark" role="alert" *ngIf="(loginForm.submitted || name.touched) && name.invalid">
+        Username can't be empty!
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" name="password" ngModel #password="ngModel" placeholder="Password" required>
+      <div class="alert alert-dark" role="alert" *ngIf="(loginForm.submitted || password.touched) && password.invalid">
+        Password can't be empty!
+      </div>
+      <div class="alert alert-dark" role="alert" *ngIf="loginForm.submitted && err">
+        Your username and password does not match records.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-dark">login</button>
+  </form>
+  </div>
+</main>
+

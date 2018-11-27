@@ -4,9 +4,11 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,5 +35,17 @@ public class CommentController {
 		comment.setCreateDate(new Date());
 		comment.setUpdateDate(new Date());
 		return cs.addComment(comment);
+	}
+	@GetMapping(value = "/comments/modify/{id}")
+	public Comment getCommentsByCommentId(@PathVariable(name = "id") Long commentId) {
+		return cs.getByCommentId(commentId);
+	}
+	@DeleteMapping("/comments/{id}")
+	public Response deleteById(@PathVariable Long id) {
+		return cs.deleteById(id);
+	}
+	@PutMapping("/comments")
+	public Response updateComment(@RequestBody Comment comment) {
+		return cs.updateComment(comment);
 	}
 }

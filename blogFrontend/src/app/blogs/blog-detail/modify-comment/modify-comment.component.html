@@ -1,0 +1,22 @@
+<div class="container shadow-lg p-3 mb-5 bg-white rounded my-lg-5">
+  <h3 class="card-title align-content-center">Modify Comments</h3>
+  <form [formGroup] = "commentModify" #commentForm="ngForm" *ngIf="commentModify" (ngSubmit)="submit()">
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Email address</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" formControlName="commenterEmail" value="{{comment.commenterEmail}}">
+      <div class="alert alert-dark" role="alert" *ngIf="(commentModify.get('commenterEmail').touched)&&commentModify.get('commenterEmail').errors && commentModify.get('commenterEmail').errors.pattern">
+        Please Input a Valid Email!
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlTextarea3">Rounded corners</label>
+      <textarea class="form-control" id="exampleFormControlTextarea3" rows="7" formControlName="content" value="{{comment.content}}"></textarea>
+      <div class="alert alert-dark" role="alert" *ngIf="(commentModify.get('content').touched)&&commentModify.get('content').errors">
+        Then Comment Can't be Empty!
+      </div>
+    </div>
+    <div class="col col-lg-2">
+      <button class="btn btn-primary btn-dark" style="color: white" role="button">submit</button>
+    </div>
+  </form>
+</div>

@@ -2,6 +2,7 @@ package com.morrun.blog.beans;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -38,7 +39,7 @@ public class Comment {
 	@Column(name = "`unlike`")
 	private int unlike;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "blog_id")
 	@JsonIgnoreProperties("comments")
 	private Blog blog;
@@ -97,7 +98,7 @@ public class Comment {
 	@Override
 	public String toString() {
 		return "Comment [id=" + id + ", content=" + content + ", commenterEmail=" + commenterEmail + ", createDate="
-				+ createDate + ", updateDate=" + updateDate + ", like=" + like + ", unlike=" + unlike + ", blog=" + blog
+				+ createDate + ", updateDate=" + updateDate + ", like=" + like + ", unlike=" + unlike + ", blog=" + blog.getId()
 				+ "]";
 	}
 

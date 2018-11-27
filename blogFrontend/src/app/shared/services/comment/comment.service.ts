@@ -15,4 +15,10 @@ export class CommentService {
   postComment(comment: Comment): Observable<{success: boolean}> {
     return this.http.post<{success: boolean}>(`${this.AUTH_API_URL}/comments`, comment);
   }
+  getCommentById(id: number): Observable<Comment> {
+    return this.http.get<Comment>(`${this.AUTH_API_URL}/comments/modify/${id}`);
+  }
+  putComment(comment: Comment): Observable<{success: boolean}> {
+    return this.http.put<{success: boolean}>(`${this.AUTH_API_URL}/comments`, comment);
+  }
 }
