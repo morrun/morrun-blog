@@ -32,6 +32,28 @@ CREATE TABLE `morrun_blog_type` (
   `type` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+CREATE TABLE `morrun_profiles` (
+  `id` int(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `morrun_profiles_degrees` (
+  `id` int(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
+  `profile_id` int(11) NOT NULL,
+  `school` varchar(255) NOT NULL,
+  `degree` varchar(255) NOT NULL,
+  `graduated_date` timestamp,
+  `major` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `morrun_profiles_skills` (
+  `id` int(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
+  `profile_id` int(11) NOT NULL,
+  `skills` varchar(255) NOT NULL,
+  `rank` int(11) DEFAULT 5
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 CREATE TABLE `morrun_comment` (
 	`id` int(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `blog_id` int(11) NOT NULL,

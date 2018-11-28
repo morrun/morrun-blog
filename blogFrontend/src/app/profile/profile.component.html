@@ -1,3 +1,28 @@
-<p>
-  profile works!
-</p>
+<div class="container card" style="min-height: 600px;max-width: 700px">
+  <img class="card-img-top" src="{{profiles.imageUrl}}" alt="Card image cap">
+  <div class="card-body">
+    <h4 class="card-title">Personal Contact</h4>
+    <h6 class="card-subtitle mb-2 text-muted">Email: {{profiles.email}}</h6>
+    <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">Education</h4>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container" *ngFor="let degree of profiles.profilesDegrees">
+        <h5>{{degree.degree}} in </h5>
+        <p class="lead">{{degree.school}}</p>
+        <p class="lead">Graduated at {{degree.graduatedDate}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">Rank My Skills</h4>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container" *ngFor="let skills of profiles.profilesSkills">
+        <label for="span1" class="col-lg-2 col-form-label"><span>{{skills.skills}}</span></label>
+          <span id="span1" class="fa fa-star checked" *ngFor="let number of arrayGen(skills.rank)"></span>
+          <span class="fa fa-star" *ngFor="let number of arrayGen(10 - skills.rank)"></span>
+      </div>
+    </div>
+  </div>
+</div>

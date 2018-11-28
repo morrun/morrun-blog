@@ -19,6 +19,6 @@ export class CommentService {
     return this.http.get<Comment>(`${this.AUTH_API_URL}/comments/modify/${id}`);
   }
   putComment(comment: Comment): Observable<{success: boolean}> {
-    return this.http.put<{success: boolean}>(`${this.AUTH_API_URL}/comments`, comment);
+    return this.http.put<{success: boolean}>(`${this.AUTH_API_URL}/comments`, comment, {withCredentials: true});
   }
 }
