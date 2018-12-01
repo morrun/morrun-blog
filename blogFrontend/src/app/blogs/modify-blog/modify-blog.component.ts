@@ -52,6 +52,7 @@ export class ModifyBlogComponent implements OnInit {
       this.blog.title = title;
       this.blog.type.type = type;
       this.blog.content = content;
+      this.blog.comments = [];
       this.bs.updateBlog(this.blog, this.blog.id).subscribe(res => {
         if (res.success) {
           this.rt.navigate(['/blogs']).then();

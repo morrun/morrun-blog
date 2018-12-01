@@ -1,6 +1,6 @@
 <main class="container">
   <div  style="height: 480px">
-  <form class="w-50 mx-auto mt-lg-5 shadow p-3 mb-5 bg-white rounded" (ngSubmit)="loginForm.valid && onSubmit(loginForm.value)" #loginForm="ngForm" (input)="updateErr()">
+  <form class="w-50 mx-auto mt-lg-5 shadow p-3 mb-5 bg-white rounded" style="width:400px" (ngSubmit)="loginForm.valid && onSubmit(loginForm.value)" #loginForm="ngForm" (input)="updateErr()">
     <div class="form-group">
       <label for="username">Email address</label>
       <input type="email" class="form-control"  aria-describedby="emailHelp" placeholder="Enter email" id="username" name="username" ngModel #name="ngModel" required="">

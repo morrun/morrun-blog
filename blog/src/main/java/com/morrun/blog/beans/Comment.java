@@ -47,7 +47,6 @@ public class Comment {
 //	private Long blogId;
 	public Comment() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public String getContent() {

@@ -23,6 +23,7 @@ export class BlogServiceService {
     return this.http.post<{success: boolean}>(`${this.AUTH_API_URL}/blogs`, blog, {withCredentials: true});
   }
   updateBlog(blog: Blog, id: number): Observable<{success: boolean}> {
+    console.log(id);
     return this.http.put<{success: boolean}>(`${this.AUTH_API_URL}/blogs/${id}`, blog, {withCredentials: true});
   }
 }

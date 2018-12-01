@@ -43,7 +43,7 @@ export class AddBlogComponent implements OnInit {
         if (res.success) {
           this.rt.navigate(['/blogs']).then();
         } else  {
-          this.rt.navigate(['/error']).then;
+          this.rt.navigate(['/error']).then();
         }
       });
     }

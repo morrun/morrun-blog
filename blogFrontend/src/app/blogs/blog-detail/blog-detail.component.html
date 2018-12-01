@@ -1,7 +1,7 @@
 <div class="jumbotron jumbotron-fluid" *ngIf="blog">
   <div class="container">
     <h1 class="display-4">{{blog.title}}</h1>
-    <p class="lead">{{blog.content}}</p>
+    <div style="white-space: pre-wrap" class="lead">{{blog.content}}</div>
   </div>
 
     <div class="btn-group float-right mx-lg-5" role="group" aria-label="Basic example">
@@ -16,7 +16,7 @@
   <div class="card" *ngFor="let comment of blog.comments; let i = index">
   <div class="card-body shadow-none p-3 mb-5 bg-light rounded">
     <h3 class="card-title">Floor {{i + 1}}</h3>
-    <p class="card-text">{{comment.content}}</p>
+    <div style="white-space: pre-wrap" class="card-text">{{comment.content}}</div>
     <div class="row">
     <div class="col-sm">
       <p class="font-weight-light">Created at : {{comment.createDate}}</p>

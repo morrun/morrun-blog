@@ -21,8 +21,13 @@ public class CommentService {
 		return cd.findAll();
 	}
 	public Response addComment(Comment comment) {
-		cd.save(comment);
-		return new Response(true);
+		try {
+			cd.save(comment);
+			return new Response(true);
+		} catch(Exception e) {
+			return new Response(false,e.getStackTrace().toString());
+		}
+		
 	}
 	public List<Comment> getCommentsByBlogId(Long blogId) {
 		return cd.findByBlogId(blogId);

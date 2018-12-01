@@ -34,14 +34,17 @@ public class BlogService {
 	}
 	public Response updateBlog(Blog blog, Long id) {
 		try {
-			Blog b = bd.findById(id).get();
-			b.setContent(blog.getContent());
-			b.setUpdateDate(new Date());
-			b.setTitle(blog.getTitle());
-			b.setLike(blog.getLike());
-			b.setUnlike(blog.getUnlike());
-			b.getType().setType(blog.getType().getType());
-			bd.save(b);
+//			Blog b = bd.findById(id).get();
+//			b.setContent(blog.getContent());
+//			b.setUpdateDate(new Date());
+//			b.setTitle(blog.getTitle());
+//			b.setLike(blog.getLike());
+//			b.setUnlike(blog.getUnlike());
+//			b.getType().setType(blog.getType().getType());
+//			b.setComments(blog.getComments());
+//			b.setCreateDate(blog.getCreateDate());
+//			b.setUserId(blog.getUserId());
+			bd.save(blog);
 			return new Response(true);
 		}catch (Exception e) {
 			return new Response(false,e.getStackTrace().toString());
