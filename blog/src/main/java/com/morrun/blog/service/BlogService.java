@@ -44,6 +44,7 @@ public class BlogService {
 //			b.setComments(blog.getComments());
 //			b.setCreateDate(blog.getCreateDate());
 //			b.setUserId(blog.getUserId());
+			blog.setUpdateDate(new Date());
 			bd.save(blog);
 			return new Response(true);
 		}catch (Exception e) {
