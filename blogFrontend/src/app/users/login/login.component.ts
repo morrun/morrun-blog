@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.authService.userSubject.subscribe( res => {
       if (!this.authService.way) {
-        this.router.navigate(['/blogs',1]).then();
+        this.router.navigate(['/blogs/Java/0']).then();
       }
     });
   }
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       .subscribe(res => {
         if (res.success) {
           // console.log(res.user.authorities[0].type);
-          this.router.navigate(['/blogs',1]).then( () => {
+          this.router.navigate(['/blogs/Java/0']).then( () => {
           });
         } else {
           this.err = true;

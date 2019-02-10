@@ -18,30 +18,62 @@
       <div class="collapse justify-content-center navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link font-weight-bold" routerLink="/blogs/1">Blogs <span class="sr-only">(current)</span></a>
+            <a class="nav-link font-weight-bold" routerLink="/blogs/HTML/0">HTML</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link font-weight-bold" routerLink="/blogs/Java/0">Java</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link font-weight-bold" routerLink="/blogs/Hibernate/0">Hibernate</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link font-weight-bold" routerLink="/blogs/JDBC/0">JDBC</a>
+          </li>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle  font-weight-bold" href="#" id="navbarDropdownMenuLinkSpring" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Spring
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkSpring">
+            <a class="dropdown-item" routerLink="/blogs/Spring/0">Spring Core</a>
+            <a class="dropdown-item" routerLink="/blogs/SpringCloud/0">Spring Cloud</a>
+          </div>
+        </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle  font-weight-bold" href="#" id="navbarDropdownMenuLink1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Angular
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+              <a class="dropdown-item" routerLink="/blogs/AngularJS/0">AngularJS</a>
+              <a class="dropdown-item" routerLink="/blogs/Angular/0">Angular</a>
+            </div>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link font-weight-bold" routerLink="/blogs/TypeScript/0">TypeScript</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link font-weight-bold" routerLink="/blogs/LINUX/0">UNIX/LINUX</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle  font-weight-bold" href="#" id="navbarDropdownMenuLinkOthers" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Others
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkOthers">
+              <a class="dropdown-item" routerLink="/blogs/Docker/0">Dokcer</a>
+              <a class="dropdown-item" routerLink="/blogs/RestfulService/0">Restful service</a>
+              <a class="dropdown-item" routerLink="/blogs/Maven/0">Maven</a>
+            </div>
           </li>
           <li class="nav-item active">
             <a class="nav-link  font-weight-bold" routerLink="/profile">Profile</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link  font-weight-bold" href="#">On Coming</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle  font-weight-bold" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              On Coming
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
+          <li class="nav-item" *ngIf="show">
+            <a class="nav-link  font-weight-bold" routerLink="/create-blog">Create</a>
+           </li>
           <li class="nav-item" *ngIf="show">
             <a class="nav-link  font-weight-bold" (click)="logout()">Logout</a>
           </li>
-          <li class="nav-item" *ngIf="show">
-            <a class="nav-link  font-weight-bold" routerLink="/create-blog">Create</a>
-          </li>
+
         </ul>
       </div>
     </nav>

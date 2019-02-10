@@ -5,9 +5,12 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.morrun.blog.beans.Blog;
+import com.morrun.blog.beans.BlogType;
 import com.morrun.blog.beans.Comment;
 import com.morrun.blog.dao.BlogDao;
 import com.morrun.blog.dao.BlogTypeDao;
@@ -56,5 +59,9 @@ public class BlogService {
 	}
 	public Blog getBlogById(Long id) {
 		return bd.findById(id).get();
+	}
+	public Page<Blog> getBlogs(String type, Pageable pageable){
+		BlogType blogType = btd.findByType(type);
+		return bd.findByTypeId(blogType.getId(),pageable);
 	}
 }

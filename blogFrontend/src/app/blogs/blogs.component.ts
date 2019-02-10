@@ -11,12 +11,13 @@ import {BlogType} from '../shared/models/blog-type';
   templateUrl: './blogs.component.html',
   styleUrls: ['./blogs.component.scss']
 })
-export class BlogsComponent implements OnInit, DoCheck {
+export class BlogsComponent implements OnInit {
   login =false;
-  length = 10;
+  // length = 10;
   totalPages: number;
+  type: string;
   page: number;
-  blogs: Blog[];
+  // blogs: Blog[];
   showBlogs: Blog[];
   selectedType: string = 'All';
   blogTypes: BlogType[];
@@ -38,15 +39,19 @@ export class BlogsComponent implements OnInit, DoCheck {
   ngOnInit() {
     this.router.paramMap.pipe(
       switchMap((paramMap: ParamMap) => {
+        this.type = paramMap.get('type');
         this.page = +paramMap.get('page');
         if (!this.page) {
-          this.page = 1;
+          this.page = 0;
         }
-        return this.blogService.getAllBlogs();
+        if (!this.type) {
+          this.type = 'Java';
+        }
+        return this.blogService.getBlogByTypeAndPages(this.type, this.page);//getAllBlogs();
       })
     ).subscribe(res => {
-      this.blogs = res;
-      this.showBlogs = this.blogs.slice((this.page - 1) * this.length, this.page * this.length);
+      this.showBlogs = res.content;
+      this.totalPages = res.totalPages;
     });
     this.blogType.getAllBlogTypes().subscribe(res => {
       this.blogTypes = res;
@@ -55,15 +60,10 @@ export class BlogsComponent implements OnInit, DoCheck {
   modifyView() {
   }
   arrayGen() {
-    if (!this.blogs) {
+    if (!this.showBlogs) {
       return [];
     }
     let result: number[] = [];
-    if (this.blogs.length % this.length > 0) {
-      this.totalPages = this.blogs.length / this.length + 1;
-    } else {
-      this.totalPages = this.blogs.length / this.length;
-    }
     for (let i = 1;i <= this.totalPages; i ++) {
       result.push(i);
     }
@@ -71,20 +71,17 @@ export class BlogsComponent implements OnInit, DoCheck {
   }
 
   prev() {
-    if (this.page === 1) {
+    if (this.page === 0) {
       return;
     }
     const page = this.page - 1;
-    this.rt.navigate(['/blogs', page]);
+    this.rt.navigate(['/blogs', this.type, page]);
   }
   next() {
     const page = this.page + 1;
     if (page > this.totalPages) {
       return;
     }
-    this.rt.navigate(['/blogs', page]);
-  }
-  ngDoCheck() {
-    //console.log(this.selectedType);
+    this.rt.navigate(['/blogs', this.type, page]);
   }
 }

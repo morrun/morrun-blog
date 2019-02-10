@@ -3,6 +3,8 @@ package com.morrun.blog.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,6 +32,10 @@ public class BlogController {
 	@GetMapping(value = "/blogs")
 	public List<Blog> getAllBlog() {
 		return bs.getAllBlog();
+	}
+	@GetMapping(value = "/blogs/pages/{type}")
+	public Page<Blog> getBlogs(@PathVariable String type,Pageable pageable) {
+		return bs.getBlogs(type, pageable);
 	}
 	@GetMapping(value = "/blogs/{id}")
 	public Blog getBlogById(@PathVariable Long id) {

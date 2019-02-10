@@ -16,6 +16,10 @@ const routes: Routes = [
     component: BlogsComponent
   },
   {
+    path: 'blogs/:type/:page',
+    component: BlogsComponent
+  },
+  {
     path: 'profile',
     component: ProfileComponent
   },
